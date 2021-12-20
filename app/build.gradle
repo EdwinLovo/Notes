@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.elovo.notes"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        useIR = true
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerVersion rootProject.ext.kotlinVersion
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    // Defaults
+    implementation rootProject.ext.deps.core_ktx
+    implementation rootProject.ext.deps.appcompat
+    implementation rootProject.ext.deps.material
+    implementation rootProject.ext.deps.compose_ui
+    implementation rootProject.ext.deps.compose_material
+    implementation rootProject.ext.deps.compose_tooling_preview
+    implementation rootProject.ext.deps.lifecycle
+    implementation rootProject.ext.deps.activity_compose
+
+    // Compose
+    implementation rootProject.ext.deps.viewmodel_compose
+    implementation rootProject.ext.deps.navigation_compose
+    implementation rootProject.ext.deps.material_icons_compose
+    implementation rootProject.ext.deps.hilt_navigation_compose
+
+    // Coroutines
+    implementation rootProject.ext.deps.coroutines_core
+    implementation rootProject.ext.deps.coroutines_android
+
+    // Dagger - Hilt
+    implementation rootProject.ext.deps.hilt_android
+    kapt rootProject.ext.deps.hilt_android_compiler
+    implementation rootProject.ext.deps.hilt_viewmodel
+    kapt rootProject.ext.deps.hilt_compiler
+
+    // Internal
+    implementation project(path: ':data')
+}
