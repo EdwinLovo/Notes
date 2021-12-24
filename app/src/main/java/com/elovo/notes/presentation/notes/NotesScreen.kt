@@ -15,17 +15,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
+import com.elovo.domain.entity.Note
 import com.elovo.notes.presentation.notes.components.NoteItem
 import com.elovo.notes.presentation.notes.components.OrderSection
 import com.elovo.notes.presentation.notes.util.NotesEvent
-import com.elovo.notes.presentation.util.Screen
 import kotlinx.coroutines.launch
 
 @ExperimentalAnimationApi
 @Composable
 fun  NotesScreen(
-    navController: NavController,
+    onClickAddNote: () -> Unit = {},
+    onClickEditNote: (Note) -> Unit = {},
     viewModel: NotesViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
@@ -35,9 +35,7 @@ fun  NotesScreen(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = {
-                    navController.navigate(Screen.AddEditNoteScreen.route)
-                },
+                onClick = onClickAddNote,
                 backgroundColor = MaterialTheme.colors.surface,
             ) {
                 Icon(
@@ -95,10 +93,7 @@ fun  NotesScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                navController.navigate(
-                                    Screen.AddEditNoteScreen.route +
-                                            "?noteId=${note.id}&noteColor=${note.color}"
-                                )
+                                onClickEditNote(note)
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))

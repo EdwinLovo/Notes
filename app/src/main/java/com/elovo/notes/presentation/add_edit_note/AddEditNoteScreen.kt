@@ -21,7 +21,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.elovo.notes.presentation.add_edit_note.components.TransparentHintTextField
 import com.elovo.notes.presentation.add_edit_note.util.AddEditNoteEvent
 import com.elovo.notes.presentation.util.Constants
@@ -30,7 +29,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun AddEditNoteScreen(
-    navController: NavController,
+    onClickSaveNote: () -> Unit = {},
     noteColor: Int,
     viewModel: AddEditNoteViewModel = hiltViewModel()
 ) {
@@ -59,7 +58,7 @@ fun AddEditNoteScreen(
                         message = event.message
                     )
                 }
-                is AddEditNoteViewModel.UIEvent.SaveNote -> navController.navigateUp()
+                is AddEditNoteViewModel.UIEvent.SaveNote -> onClickSaveNote()
             }
         }
     }

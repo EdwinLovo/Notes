@@ -47,8 +47,6 @@ Uapp/src/main/java/com/elovo/notes/presentation/add_edit_note/util/AddEditNoteEv
 Wapp/src/main/java/com/elovo/notes/presentation/add_edit_note/util/NoteTextFieldState.kt,b/1/b1d2e10f2c22f1e91674ae77ac1ba48223abb38c
 P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
-n
->app/src/main/java/com/elovo/notes/presentation/MainActivity.kt,b/9/b935f3eee2864be02c0c930c3483c846ef318a95
 p
 @domain/src/main/java/com/elovo/domain/use_case/AddNoteUseCase.kt,0/c/0cd0743c1e42306b5d287a2f2c6d97c54f3a3ad8
 q
@@ -57,10 +55,6 @@ r
 Bdata/src/main/java/com/elovo/data/repository/NoteRepositoryImpl.kt,5/0/50580ef3637590d63716a4108f1a3f583acad2a6
 c
 3app/src/main/java/com/elovo/notes/ui/theme/Color.kt,c/d/cd935e18d5a703577ea44f9ae744c71703058aaf
-Å
-Qapp/src/main/java/com/elovo/notes/presentation/add_edit_note/AddEditNoteScreen.kt,0/3/0380dd38e1d42cc7450d492e0756895a221e2f2b
-s
-Capp/src/main/java/com/elovo/notes/presentation/notes/NotesScreen.kt,3/c/3cf93c75bd85cba2e6809b5d24a2f9808eb09ebf
 c
 3app/src/main/java/com/elovo/notes/ui/theme/Theme.kt,e/e/eebac346fb6edd53c49c7a33ab5e99c220b5aad3
 `
